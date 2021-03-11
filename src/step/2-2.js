@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css'
 
+/**
+ * 2-2 - Array.reduce()
+ */
+
 const initialState = {
   nextNodeId: 1,
   notes: {}

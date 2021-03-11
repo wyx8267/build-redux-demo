@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css'
 
+/**
+ * 2 - reducer
+ */
+
 const initialState = {
   nextNodeId: 1,
   notes: {}
@@ -21,30 +25,34 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         nextNodeId: id + 1,
-        notes: {
-          ...state.notes,
-          [id]: newNote
+          notes: {
+            ...state.notes,
+            [id]: newNote
+          }
+      }
+      case UPDATE_NOTE:
+        const {
+          editId, content
+        } = action;
+        const editedNote = {
+          ...state.notes[editId],
+          content
         }
-      }
-    case UPDATE_NOTE:
-      const { editId, content } = action;
-      const editedNote = {
-        ...state.notes[editId],
-        content
-      }
-      return {
-        ...state,
-        notes: {
-          ...state.notes,
-          [editId]: editedNote
+        return {
+          ...state,
+          notes: {
+            ...state.notes,
+            [editId]: editedNote
+          }
         }
-      }
-    default:
-      return state
+        default:
+          return state
   }
 }
 
-const state0 = reducer(undefined, { type: CREATE_NOTE })
+const state0 = reducer(undefined, {
+  type: CREATE_NOTE
+})
 
 const state1 = reducer(state0, {
   type: UPDATE_NOTE,
@@ -53,8 +61,7 @@ const state1 = reducer(state0, {
 })
 
 const renderApp = () => {
-  ReactDOM.render(
-    <pre>{JSON.stringify(state1, null, 2)}</pre>,
+  ReactDOM.render(<pre>{JSON.stringify(state1, null, 2)}</pre>,
     document.getElementById('root')
   )
 }

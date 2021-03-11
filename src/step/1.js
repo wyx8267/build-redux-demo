@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css'
 
+// 1 - state
+
 const initialState = {
   nextNodeId: 1,
   notes: {}

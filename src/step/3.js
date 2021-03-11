@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css'
 
-const initialState = {
+/**
+ * 3 - createStore
+ */
+
+ const initialState = {
   nextNodeId: 1,
   notes: {}
 }

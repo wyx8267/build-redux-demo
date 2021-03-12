@@ -95,6 +95,8 @@ const createStore = (reducer) => {
 
 const store = createStore(reducer)
 
+store.dispatch({ type: CREATE_NOTE })
+
 const renderApp = () => {
   ReactDOM.render(
     <NoteAppContainer store={store}/>,
